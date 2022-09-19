@@ -1,0 +1,342 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+/* ---INDEX.HTML--- */
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+h1,
+h2{
+    font-weight: 300;
+    line-height: 1.2;
+    margin: 10px 0;
+    font-size: 35px;
+}
+
+p {
+    margin: 10px 0;
+}
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+    font-size: 23px;
+}
+
+img {
+    width: 100%;
+}
+
+/* Navbar */
+
+.navbar {
+    background: #11114E;
+    color: #fff;
+    height: 110px;
+}
+
+.navbar .flex {
+    justify-content: space-between;
+}
+
+.navbar ul {
+    display: flex;
+}
+
+.navbar a {
+    color: #fff;
+    margin: 0 5px;
+    padding: 10px;
+}
+
+.navbar a:hover {
+    border-bottom: 3px #fff solid;
+}
+
+/* Main Section */
+
+.main {
+    height: 475px;
+    background-color: #11114E;
+    color: #fff;
+    position: relative;
+}
+
+.main h1 {
+    font-size: 60px;
+}
+
+.main h2 {
+    font-size: 38px;
+}
+
+.main p {
+    font-size: 30px;
+    margin: 35px 0;
+ }
+
+ .main .grid {
+    overflow: visible;
+    grid-template-columns: 55% 45;
+    gap: 30px;
+ }
+
+ .main-form {
+    position: relative;
+    top: 60px;
+    height: 425px;
+    width: 550px;
+    padding: 40px;
+    z-index: 100;
+ }
+
+ .main-form .form-control {
+    margin: 30px;
+ }
+
+ .main::before,
+ .main::after {
+    content: '';
+    position: absolute;
+    height: 100px;
+    bottom: -75px;
+    right: 0;
+    left: 0;
+    background: #fff;
+    transform: skewY(-3deg);
+    -webkit-transform: skewY(-3deg);
+    -moz-transform: skewY(-3deg);
+    -ms-transform: skewY(-3deg);
+ }
+
+
+/* Info Section */
+
+.info {
+    padding-top: 100px;
+}
+
+.info-heading {
+    font-size: 30px;
+}
+
+.info .grid h3 {
+    font-size: 25px;
+    padding-top: 15px;
+}
+
+.info i {
+    color: orange;
+}
+
+
+/* Footer */
+.bg-footer {
+    color: #fff;
+    background-color: #11114E;
+}
+
+footer a {
+    color: #fff;
+}
+
+
+/* ---ABOUT.HTML--- */
+
+
+/* Site Wide */
+
+.container {
+    max-width: 2400px;
+    margin: 0 auto;
+    overflow: auto;
+    padding: 0 40px;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    color: black;
+    padding: 20px;
+    margin: 10px;
+}
+
+.btn-submit {
+    display: inline-block;
+    font-size: 23px;
+    padding: 10px 30px;
+    margin: 30px 5px;
+    background-color: #11114E;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.input {
+    display: inline-block;
+    font-size: 23px;
+    padding: 5px 0;
+    margin: 10px 5px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* Padding */
+
+.py-1 {
+    padding: 1rem 0;
+}
+
+.py-2 {
+    padding: 1.5rem 0;
+}
+
+.py-3 {
+    padding: 2rem 0;
+}
+
+.py-4 {
+    padding: 3rem 0;
+}
+
+.py-5 {
+    padding: 4rem 0;
+}
+
+.p-1 {
+    padding: 1rem;
+}
+
+.p-2 {
+    padding: 1.5rem;
+}
+
+.p-3 {
+    padding: 2rem;
+}
+
+.p-4 {
+    padding: 3rem;
+}
+
+.p-5 {
+    padding: 4rem;
+}
+
+/* Margins */
+
+.my-1 {
+    margin: 1rem 0;
+}
+
+.my-2 {
+    margin: 1.5rem 0;
+}
+
+.my-3 {
+    margin: 2rem 0;
+}
+
+.my-4 {
+    margin: 3rem 0;
+}
+
+.my-5 {
+    margin: 4rem 0;
+}
+
+.m-1 {
+    margin: 1rem;
+}
+
+.m-2 {
+    margin: 1.5rem;
+}
+
+.m-3 {
+    margin: 2rem;
+}
+
+.m-4 {
+    margin: 3rem;
+}
+
+.m-5 {
+    margin: 4rem;
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+    .grid,
+    .main .grid,
+    .info .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .main-text {
+        text-align: center;
+        margin-top: 40px;
+    }
+
+    .main {
+        height: auto;
+    }
+
+    .main-form {
+        justify-self: center;
+        margin: auto;
+    }
+}
+
+
+/* Phones */
+@media (max-width: 500px) {
+    .navbar {
+        height: 110px;
+    }
+
+    .navbar .flex {
+        flex-direction: column;
+    }
+
+    .navbar ul {
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+}
