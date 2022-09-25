@@ -6,10 +6,9 @@ import PIL.ExifTags
 
 # load image and return exifdata
 def get_data(filename):
-
-    image = image.open(filename)
-    exifdata = image._getexif()
-    return exifdata
+    image = Image.open(filename)
+    exif_data = image.getexif()
+    return exif_data
 
 # returns new dictionary with tagid's
 def extract_data(exifdata):

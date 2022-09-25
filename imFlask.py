@@ -23,7 +23,8 @@ def results():
 @app.route('/', methods=['POST'])
 def image_up():
     if request.method == "POST":
-        file_data = data_info.extract_data()
+        file = request.files['file']
+        file_data = data_info.extract_data(file)
 
 
 if __name__ == '__main__':
