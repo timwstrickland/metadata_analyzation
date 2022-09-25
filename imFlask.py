@@ -25,6 +25,7 @@ def image_up():
     if request.method == "POST":
         file = request.files['file']
         file_data = data_info.extract_data(file)
+        return file.filename
 
 
 if __name__ == '__main__':
