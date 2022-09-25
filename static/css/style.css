@@ -1,6 +1,10 @@
+
+
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
 /* ---INDEX.HTML--- */
+
+/* Base settings */
 
 * {
     box-sizing: border-box;
@@ -156,8 +160,52 @@ footer a {
 
 /* ---ABOUT.HTML--- */
 
+/* About header */
+.feat-header {
+    background-color: #11114E;
+    color: #fff;
+}
 
-/* Site Wide */
+.head-main {
+    font-size: 60px;
+}
+
+.head-intro {
+    font-size: 30px;
+    margin: 35px 0;
+}
+
+.image-icon {
+    width: 400px;
+    justify-self: flex-end;
+    margin: 50px;
+    font-size: xx-large;
+}
+
+/* About features */
+.feat-discript i {
+    color: orange;
+    margin-right: 30px;
+}
+
+.feat-discript p {
+    font-size: 23px;
+}
+
+.feat-discript .grid {
+    padding: 75px;
+}
+
+.feat-discript .grid > *:first-child {
+    grid-column: 1 / span 3;
+}
+
+.feat-discript .grid > *:nth-child(5) {
+    grid-column: 1 / span 2;
+}
+
+
+/* ---Site Wide--- */
 
 .container {
     max-width: 2400px;

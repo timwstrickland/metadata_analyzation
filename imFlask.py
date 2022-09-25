@@ -10,6 +10,12 @@ def home():
 def about():
     return render_template('about.html')
 
+@app.route('/results')
+def about():
+    return render_template('results.html')
+    # eventually will be: return render_template('results.html', results=variable_for_results)
+
+
 #@app.route('/', methods=['POST'])
 #def image_up():
 
