@@ -24,7 +24,7 @@ def results():
 def image_up():
     if request.method == "POST":
         file = request.files['file']
-        file_data = data_info.extract_data(file)
+        file_data = data_info.get_data(file)
         return file.filename
 
 
