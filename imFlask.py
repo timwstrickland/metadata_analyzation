@@ -25,6 +25,7 @@ def image_up():
     if request.method == "POST":
         file = request.files['file']
         file_data = data_info.get_data(file)
+        # Just for now return the file name to make sure nothing breaks
         return file.filename
 
 
