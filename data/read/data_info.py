@@ -1,18 +1,16 @@
-# Overview of functions and capability using the Pillow library
+"""Overview of functions and capability using the Pillow library"""
 import csv
 from PIL import Image
-from PIL.ExifTags import TAGS, GPSTAGS
-import PIL.ExifTags
+from PIL.ExifTags import TAGS
 
-# load image and return exifdata
 def get_data(filename):
+    """load image and return exifdata"""
     image = Image.open(filename)
     exif_data = image.getexif()
     return exif_data
 
-# returns new dictionary with tagid's
 def extract_data(exifdata):
-
+    """returns new dictionary with tagid's"""
     exif_data={}
 
     for tagid in exifdata:
@@ -21,12 +19,14 @@ def extract_data(exifdata):
         if isinstance(value, bytes):
             value = value.decode()
         exif_data.update({tagname: value})
-        
+
     return exif_data
 
 def write_files(exifdata):
-    
-    w = csv.writer(open("report.csv", "w", newline=""))
+    """creates csv file if it doesn't exist
+    writes metadata to file
+    """
+    write_csv = csv.writer(open("report.csv", "w", encoding="utf8", newline=""))
 
     for tagid in exifdata:
 
@@ -34,12 +34,10 @@ def write_files(exifdata):
         value = exifdata.get(tagid)
         if isinstance(value, bytes):
             value = value.decode()
-        w.writerow([tagname, value])
+        write_csv.writerow([tagname, value])
 
-# not functional yet, need to resolve key errors
 def get_gps(exif_data):
-    
-    
+    """not functional yet, need to resolve key errors"""
     north = exif_data['GPSInfo'][2]
     east = exif_data['GPSInfo'][4]
     lat = ((((north[0] * 60) + north[1]) * 60) + north[2]) / 60 / 60
@@ -47,6 +45,3 @@ def get_gps(exif_data):
     lat, long = float(lat), float(long)
 
     return lat,long
-
-
-
