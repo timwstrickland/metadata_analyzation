@@ -1,5 +1,19 @@
-# Sort through the data for a specific tag - String and dictionary params
+"""
+Exif_manager handles manipulating the exif data in any desired way.
+Only one should exist for each function.
+"""
+
+
 def sort_data(exif_tag, exif_data):
+    """
+    Takes an exif tag string argument and compares it to
+    the key values from the exif data. If the tag exists,
+    return that value. If it does not exist, throw an exception.
+
+    :param exif_tag: string value of the desired tag
+    :param exif_data: dictionary of exif data
+    :return: value of the exif tag, or throws exception
+    """
     # Get the key set from the dictionary
     tags = exif_data.keys()
     found = False
@@ -18,8 +32,14 @@ def sort_data(exif_tag, exif_data):
     return exif_data[exif_tag]
 
 
-# Scrub the dictionary of key/value pairs that do not have meaningful data - dictionary param
 def scrub_data(exif_data):
+    """
+    Removes entries from the exif_data dictionary if they do not have
+    associated values (this could be None or empty).
+
+    :param exif_data: dictionary of exif values
+    :return: a new dictionary without empty values
+    """
     # Copy the data over (will throw if you modify while iterating)
     new_dict = exif_data.copy()
 
@@ -29,13 +49,3 @@ def scrub_data(exif_data):
             new_dict.pop(key)
 
     return new_dict
-
-
-exifDict = {"yes": "data", "ImageWidth": None, "test1": "", "test2": None, "ImageHeight": None, "Make": "Samsung"}
-
-print(sort_data("ImageWidth", exifDict))
-print(scrub_data(exifDict))
-print(sort_data("ImageHeight", exifDict))
-
-# This should throw with a message of a missing tag
-print(sort_data("ImageHeight", scrub_data(exifDict)))
