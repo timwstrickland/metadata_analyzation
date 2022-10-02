@@ -6,7 +6,7 @@ from PIL.ExifTags import TAGS
 def get_data(filename):
     """load image and return exifdata"""
     image = Image.open(filename)
-    exifdata = image.getexif()
+    exifdata = image._getexif()
     return exifdata
 
 def extract_data(exifdata):
