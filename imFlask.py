@@ -25,8 +25,9 @@ def image_up():
     if request.method == "POST":
         file = request.files['file']
         file_data = data_info.get_data(file)
+        meta = data_info.extract_data(file_data)
         # Just for now return the file name to make sure nothing breaks
-        return file.filename
+        return render_template('results.html', meta=meta)
 
 
 if __name__ == '__main__':

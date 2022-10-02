@@ -31,6 +31,11 @@
         <!-- display results - set results to variable; in render results set variable
         to be displayed - return render_template('results.html', results=variable_for_results) 
         Results will be displayed here by {{ results }} --> 
+        <ul>
+            {% for key, value in meta.items() %}
+                <li>{{ key }}: {{ value }} </li>
+            {% endfor %}
+        </ul>
     </div>
    </section>
 
