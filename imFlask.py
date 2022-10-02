@@ -22,13 +22,30 @@ def results():
 
 @app.route('/', methods=['POST'])
 def image_up():
-    if request.method == "POST":
-        file = request.files['file']
+    file = request.files['file']
+    try:
+        check_file(file.filename)
         file_data = data_info.get_data(file)
         meta = data_info.extract_data(file_data)
-        # Just for now return the file name to make sure nothing breaks
         return render_template('results.html', meta=meta)
+    except NameError:
+        return render_template('index.html')
+    except TypeError:
+        return render_template('index.html')
+
+
+def check_file(filename):
+    approved_types = ['jpg', 'jpeg']
+    bad_characters = "!@#$%^&*/<>"
+
+    for value in range(0, len(filename)):
+        if filename[value] in bad_characters:
+            raise NameError()
+
+    if '.' in filename and filename.rsplit('.', 1)[1].lower() not in approved_types:
+        raise TypeError()
 
 
 if __name__ == '__main__':
     app.run(debug=True)
+    app.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024
