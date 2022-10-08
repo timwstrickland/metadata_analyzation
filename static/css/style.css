@@ -204,6 +204,28 @@ footer a {
     grid-column: 1 / span 2;
 }
 
+/* ---RESULTS.HTML--- */
+
+.export-button {
+    display: inline-block;
+    font-size: 23px;
+    padding: 10px 30px;
+    margin: 30px 5px;
+    background-color: #11114E;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.result-heading {
+    padding-top: 50px;
+    padding-bottom: 40px;
+}
+
+.data ul {
+    list-style: square outside none;
+}
+
 
 /* ---Site Wide--- */
 

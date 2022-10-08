@@ -26,16 +26,22 @@
    <section class="result-display">
     <div class="container grid">
         <h1 class="result-heading">Exif Data Results of Image:</h1>
-    </div>
-    <div>
-        <!-- display results - set results to variable; in render results set variable
-        to be displayed - return render_template('results.html', results=variable_for_results) 
+        <!-- div for space -->
+        <div></div>
+        <div>
+            <!-- display results - set results to variable; in render results set variable
+            to be displayed - return render_template('results.html', results=variable_for_results) 
         Results will be displayed here by {{ results }} --> 
-        <ul>
-            {% for key, value in meta.items() %}
-                <li>{{ key }}: {{ value }} </li>
-            {% endfor %}
-        </ul>
+             <ul class="data">
+                {% for key, value in meta.items() %}
+                    <li>{{ key }}: {{ value }} </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <!-- div for space -->
+        <div></div>
+        <div >
+            <button type="button" id="export-btn" class="export-button">Export to CSV</button>
     </div>
    </section>
 
