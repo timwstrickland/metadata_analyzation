@@ -1,7 +1,9 @@
-from flask import Flask, redirect, url_for, render_template, request, send_file
+from flask import Flask, redirect, url_for, render_template, request, send_file, flash
 from data.read import data_info
 
 app = Flask(__name__)
+app.secret_key = 'thisisasecretkey'
+app.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024
 
 
 @app.route('/')
@@ -30,8 +32,13 @@ def image_up():
         new_file = data_info.write_files(meta)
         return render_template('results.html', meta=meta)
     except NameError:
+        flash("Invalid file name, please try again.")
         return render_template('index.html')
     except TypeError:
+        flash("Presented file has no exif data.")
+        return render_template('index.html')
+    except NotImplementedError:
+        flash("Incorrect file type. ImageMetrics can only use jpg or jpeg pictures.")
         return render_template('index.html')
 
 @app.route('/files')
@@ -47,9 +54,8 @@ def check_file(filename):
             raise NameError()
 
     if '.' in filename and filename.rsplit('.', 1)[1].lower() not in approved_types:
-        raise TypeError()
+        raise NotImplementedError()
 
 
 if __name__ == '__main__':
     app.run(debug=True)
-    app.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024
