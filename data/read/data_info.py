@@ -17,7 +17,7 @@ def extract_data(exifdata):
         tagname = TAGS.get(tagid, tagid)
         value = exifdata.get(tagid)
         if isinstance(value, bytes):
-            value = value.decode()
+            value = value.decode('latin1')
         exif_data.update({tagname: value})
 
     return exif_data
@@ -26,7 +26,8 @@ def write_files(exifdata):
     """creates csv file if it doesn't exist
     writes metadata to file
     """
-    write_csv = csv.writer(open("report.csv", "w", encoding="utf8", newline=""))
+    write_csv = csv.writer(open("report.csv", "w", encoding="latin1", errors='ignore', newline=""), delimiter = '|', quoting=csv.QUOTE_NONE, quotechar='',
+                  escapechar='\\')
 
     for tagid in exifdata:
 
