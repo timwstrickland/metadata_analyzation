@@ -1,4 +1,4 @@
-from flask import Flask, redirect, url_for, render_template, request, flash
+from flask import Flask, redirect, url_for, render_template, request, send_file, flash
 from data.read import data_info
 
 app = Flask(__name__)
@@ -29,6 +29,7 @@ def image_up():
         check_file(file.filename)
         file_data = data_info.get_data(file)
         meta = data_info.extract_data(file_data)
+        new_file = data_info.write_files(meta)
         return render_template('results.html', meta=meta)
     except NameError:
         flash("Invalid file name, please try again.")
@@ -40,6 +41,9 @@ def image_up():
         flash("Incorrect file type. ImageMetrics can only use jpg or jpeg pictures.")
         return render_template('index.html')
 
+@app.route('/files')
+def files():
+    return send_file('report.csv')
 
 def check_file(filename):
     approved_types = ['jpg', 'jpeg']
